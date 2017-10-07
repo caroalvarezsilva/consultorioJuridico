@@ -1,0 +1,163 @@
+package org.consultorioJur.model;
+
+import java.util.*;
+
+import javax.persistence.*;
+
+import org.openxava.annotations.*;
+
+@Entity
+@View(members="date, groupLawCenter;" +
+		"name, lastName; "
+		+ "document;" + 
+		"address;" + 
+		"phone;"+
+		"mobile;"+
+		"email;" + 
+		 "sex"
+		)
+public class AgendaRequest {
+
+	@Id
+	@Hidden
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int agendaRequestId;
+
+	@Column(length = 30)
+	@Required
+	private Date date;
+
+	@DescriptionsList
+	@Required
+	@ManyToOne
+	private GroupLawCenter groupLawCenter;
+
+	@Column(length = 30)
+	@Required
+	private String name;
+
+	@Column(length = 30)
+	@Required
+	private String lastName;
+
+	@Embedded
+	Document document;
+
+	@Enumerated(EnumType.STRING)
+	private Sex sex;
+
+	public enum Sex {
+		MALE, FEMALE
+	};
+
+	@Embedded
+	private Address address;
+
+	@Column(length = 30)
+	@Required
+	String phone;
+
+	@Column(length = 30)
+	@Required
+	String mobile;
+
+	@Column(length = 30)
+	@Required
+	String email;
+
+	public Integer getAgendaRequestId() {
+		return agendaRequestId;
+	}
+
+	public void setAgendaRequestId(Integer agendaRequestId) {
+		this.agendaRequestId = agendaRequestId;
+	}
+
+	public void setAgendaRequestId(int agendaRequestId) {
+		this.agendaRequestId = agendaRequestId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Sex getSex() {
+		return sex;
+	}
+
+	public void setSex(Sex sex) {
+		this.sex = sex;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Document getDocument() {
+		return document;
+	}
+
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public GroupLawCenter getGroupLawCenter() {
+		return groupLawCenter;
+	}
+
+	public void setGroupLawCenter(GroupLawCenter groupLawCenter) {
+		this.groupLawCenter = groupLawCenter;
+	}
+
+	
+
+	
+}

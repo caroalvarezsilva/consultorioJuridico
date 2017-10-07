@@ -1,0 +1,24 @@
+# Etiquetas para la aplicaciï¿½n ConsultorioJuridico
+
+
+#Etiquetas globales
+
+ConsultorioJuridico=ConsultorioJuridico
+
+name = Nombre
+lastName = Apellido
+department = Departamento
+male=Masculino
+female=Femenino
+street = Dirección
+neighborhood = Barrio
+save = Guardar
+document = Documento
+mobile = Célular
+teacher = Docente
+schedules = Horario
+day = Día
+starttime = Hora comienzo
+endtime = Hora fin
+grouplawcenter = Grupos Consultorio Jurídico
+AgendaRequest.module = Agenda de consultantes
