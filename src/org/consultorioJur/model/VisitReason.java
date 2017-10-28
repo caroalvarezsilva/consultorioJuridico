@@ -27,6 +27,7 @@ public class VisitReason {
 		return reason;
 	}
 
+	
 	public void setReason(String reason) {
 		this.reason = reason;
 	}

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members="name"  
+@View(members="name,place"  
 		)
 public class GroupLawCenter {
 	
