@@ -8,21 +8,25 @@ import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members = "day,myDate,groupLawCenter;" + "person;" + "visitReason;")
+@View(members = "date, groupLawCenter;" + "person;" + "visitReason;")
 public class AgendaRequest {
 
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int agendaRequestId;
-		
+
 	@Column(length = 30)
 	@Required
-	private Date myDate;
+	@OnChange(OnChangeDateAction.class)
+	private Date date;
 
-    @NoModify @NoCreate @ManyToOne
-    @DescriptionsList(depends = "day", condition="${groupId} in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a WHERE a.schedule.day = ?)"
-    )
+	@NoModify
+	@NoCreate
+	@ManyToOne
+	@DescriptionsList(
+			 condition="groupId in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a   WHERE a.schedule.day = 'Martes')"
+			)
 	private GroupLawCenter groupLawCenter;
 
 	@NoModify
@@ -39,16 +43,25 @@ public class AgendaRequest {
 
 	private String problem;
 
-	public Integer getAgendaRequestId() {
-		return agendaRequestId;
-	}
+	@NoModify
+	@NoCreate
+	@OneToOne
+	private CaseFile caseFile;
 
-	public void setAgendaRequestId(Integer agendaRequestId) {
-		this.agendaRequestId = agendaRequestId;
+	public int getAgendaRequestId() {
+		return agendaRequestId;
 	}
 
 	public void setAgendaRequestId(int agendaRequestId) {
 		this.agendaRequestId = agendaRequestId;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public GroupLawCenter getGroupLawCenter() {
@@ -83,23 +96,12 @@ public class AgendaRequest {
 		this.problem = problem;
 	}
 
-	public Date getMyDate() {
-		return myDate;
+	public CaseFile getCaseFile() {
+		return caseFile;
 	}
 
-	public void setMyDate(Date myDate) {
-		this.myDate = myDate;
+	public void setCaseFile(CaseFile caseFile) {
+		this.caseFile = caseFile;
 	}
 
-	@Depends("myDate")
-	@LabelFormat(LabelFormatType.NO_LABEL) 
-    @Stereotype("LABEL")
-    public String getDay() { 
-    		System.out.println("Function getDay");
-        if (myDate == null) return "";
-        String day = new java.text.SimpleDateFormat("EEEE").format(myDate);
-        System.out.println("day: " + day);
-        return day;
-		
-    }
 }

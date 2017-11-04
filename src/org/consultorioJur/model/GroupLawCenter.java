@@ -4,7 +4,6 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import org.consultorioJur.calculators.*;
 import org.openxava.annotations.*;
 
 @Entity
