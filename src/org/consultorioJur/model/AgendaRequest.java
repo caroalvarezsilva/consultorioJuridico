@@ -8,25 +8,21 @@ import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members = "date, groupLawCenter;" + "person;" + "visitReason;")
+@View(members = "day,myDate,groupLawCenter;" + "person;" + "visitReason;")
 public class AgendaRequest {
 
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int agendaRequestId;
-
+		
 	@Column(length = 30)
 	@Required
-	@OnChange(OnChangeDateAction.class)
-	private Date date;
+	private Date myDate;
 
-	@NoModify
-	@NoCreate
-	@ManyToOne
-	@DescriptionsList(
-			 condition="groupId in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a   WHERE a.schedule.day = 'Martes')"
-			)
+    @NoModify @NoCreate @ManyToOne
+    @DescriptionsList(depends = "day", condition="${groupId} in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a WHERE a.schedule.day = ?)"
+    )
 	private GroupLawCenter groupLawCenter;
 
 	@NoModify
@@ -53,14 +49,6 @@ public class AgendaRequest {
 
 	public void setAgendaRequestId(int agendaRequestId) {
 		this.agendaRequestId = agendaRequestId;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public GroupLawCenter getGroupLawCenter() {
@@ -95,4 +83,23 @@ public class AgendaRequest {
 		this.problem = problem;
 	}
 
+	public Date getMyDate() {
+		return myDate;
+	}
+
+	public void setMyDate(Date myDate) {
+		this.myDate = myDate;
+	}
+
+	@Depends("myDate")
+	@LabelFormat(LabelFormatType.NO_LABEL) 
+    @Stereotype("LABEL")
+    public String getDay() { 
+    		System.out.println("Function getDay");
+        if (myDate == null) return "";
+        String day = new java.text.SimpleDateFormat("EEEE").format(myDate);
+        System.out.println("day: " + day);
+        return day;
+		
+    }
 }

@@ -8,10 +8,13 @@
     <var-entorno nombre="ConsultorioJuridico_ANYO_DEFECTO" valor="2015"/>
     -->
     
-    <!-- Objeto de sesión:
+    
     <Objeto nombre="ConsultorioJuridico_anyoActivo" clase="java.lang.Integer" valor="2015" 
             ambito="global"/>
-    -->
+    
+<!--     <Objeto nombre="day_selected" clase="java.lang.String" valor="Lunes"  -->
+<!--             ambito="global"/> -->
+    
     
     <!-- Controlador:
     <controlador nombre="Profesor">
