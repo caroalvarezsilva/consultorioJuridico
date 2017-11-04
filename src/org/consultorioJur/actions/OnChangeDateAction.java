@@ -11,8 +11,9 @@ public class OnChangeDateAction extends OnChangePropertyBaseAction {
 
 	@Override
 	public void execute() throws Exception {
-//		Date date = (Date) getNewValue();
+		Date date = (Date) getNewValue();
 //		String day = getDay(date);
+		
 //		System.out.println(day);
 //		//List<String> list = new ArrayList<String>();
 //		//Collection<GroupLawCenter> list2 = XPersistence.getManager()

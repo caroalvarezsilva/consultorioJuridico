@@ -26,6 +26,7 @@ public class Person {
 	@Column(length = 30)
 	@Required
 	private String lastName;
+	
 
 	@Column(length = 30)
 	@Required
