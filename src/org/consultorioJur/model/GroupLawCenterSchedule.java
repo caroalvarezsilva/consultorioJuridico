@@ -7,21 +7,21 @@ import org.openxava.annotations.*;
 @Entity
 @IdClass(GroupLawCenterScheduleId.class)
 public class GroupLawCenterSchedule {
-	
+
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int groupLawCenterScheduleId;
-	
- 	@Id
-    @ManyToOne
-    @JoinColumn(name="groupId")
-    private GroupLawCenter groupLawCenter;
-    
- 	@Id
-    @ManyToOne
-    @JoinColumn(name="scheduleId")
-    private Schedule schedule;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "groupId")
+	private GroupLawCenter groupLawCenter;
+
+	@Id
+	@ManyToOne
+	@JoinColumn(name = "scheduleId")
+	private Schedule schedule;
 
 	public GroupLawCenter getGroupLawCenter() {
 		return groupLawCenter;
@@ -43,19 +43,8 @@ public class GroupLawCenterSchedule {
 		this.groupLawCenterScheduleId = groupLawCenterScheduleId;
 	}
 
-//	public Schedule getScheduleId() {
-//		return scheduleId;
-//	}
-//
-//	public void setScheduleId(Schedule scheduleId) {
-//		this.scheduleId = scheduleId;
-//	}
-
 	public void setSchedule(Schedule schedule) {
 		this.schedule = schedule;
 	}
-
-
-	 	
 
 }

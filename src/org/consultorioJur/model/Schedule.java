@@ -8,7 +8,7 @@ import org.openxava.annotations.*;
 
 @Entity
 public class Schedule {
-	
+
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Schedule {
 	@Column(length = 30)
 	@Required
 	private String day;
-	
+
 	@Column(length = 30)
 	@Required
 	private String startTime;
@@ -25,12 +25,9 @@ public class Schedule {
 	@Column(length = 30)
 	@Required
 	private String endTime;
-	 
-//	@ManyToMany(mappedBy="schedules")
-//	private List<GroupLawCenter> groups;
-	
+
 	@OneToMany(mappedBy = "schedule")
-    private Collection<GroupLawCenterSchedule> groupLawCenterSchedules;
+	private Collection<GroupLawCenterSchedule> groupLawCenterSchedules;
 
 	public String getDay() {
 		return day;
@@ -72,16 +69,4 @@ public class Schedule {
 		this.groupLawCenterSchedules = groupLawCenterSchedules;
 	}
 
-//	public List<GroupLawCenter> getGroups() {
-//		return groups;
-//	}
-//
-//	public void setGroups(List<GroupLawCenter> groups) {
-//		this.groups = groups;
-//	}
-	
-	
-	
-	
-	
 }
