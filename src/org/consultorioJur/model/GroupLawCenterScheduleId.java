@@ -8,30 +8,33 @@ import javax.persistence.*;
 public class GroupLawCenterScheduleId implements Serializable{
 
     
-    private Long groupLawCenter;
+    private int groupLawCenter;
 
   
-    private Long schedule;
+    private int schedule;
 
 
-	public Long getGroupLawCenter() {
+	public int getGroupLawCenter() {
 		return groupLawCenter;
 	}
 
 
-	public void setGroupLawCenter(Long groupLawCenter) {
+	public void setGroupLawCenter(int groupLawCenter) {
 		this.groupLawCenter = groupLawCenter;
 	}
 
 
-	public Long getSchedule() {
+	public int getSchedule() {
 		return schedule;
 	}
 
 
-	public void setSchedule(Long schedule) {
+	public void setSchedule(int schedule) {
 		this.schedule = schedule;
 	}
+
+
+
     
     
 }
