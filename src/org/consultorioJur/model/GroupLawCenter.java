@@ -4,40 +4,33 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.consultorioJur.calculators.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members="name"  
-		)
+@View(members = "name,place")
 public class GroupLawCenter {
-	
+
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int groupId;
-	
+
 	@Column(length = 30)
 	@Required
 	private String name;
-	
+
 	@Column(length = 30)
 	@Required
-	private String place; 
-	
+	private String place;
+
 	@OneToMany
-	private List<AgendaRequest> agendaRequests; 
-	
-//	@ManyToMany
-//	  @JoinTable(
-//	      name="GroupLawCenterSchedule",
-//	      joinColumns=@JoinColumn(name="groupId", referencedColumnName="groupId"),
-//	      inverseJoinColumns=@JoinColumn(name="scheduleId", referencedColumnName="scheduleId"))
-//	private List<Schedule> schedules;
-//	
+	private List<AgendaRequest> agendaRequests;
+
 	@OneToMany(mappedBy = "groupLawCenter")
-    private Collection<GroupLawCenterSchedule> groupLawCenterSchedules;
-	
-	@ManyToMany(mappedBy="groupLawCenters")
+	private Collection<GroupLawCenterSchedule> groupLawCenterSchedules;
+
+	@ManyToMany(mappedBy = "groupLawCenters")
 	private List<Teacher> teacher;
 
 	public String getName() {
@@ -55,15 +48,6 @@ public class GroupLawCenter {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	
-
-//	public List<Schedule> getSchedules() {
-//		return schedules;
-//	}
-//
-//	public void setSchedules(List<Schedule> schedules) {
-//		this.schedules = schedules;
-//	}
 
 	public Collection<GroupLawCenterSchedule> getGroupLawCenterSchedules() {
 		return groupLawCenterSchedules;
@@ -96,10 +80,5 @@ public class GroupLawCenter {
 	public void setAgendaRequests(List<AgendaRequest> agendaRequests) {
 		this.agendaRequests = agendaRequests;
 	}
-
-	
-	
-	
-	
 
 }
