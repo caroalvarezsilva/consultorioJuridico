@@ -1,1 +1,5 @@
 /xava/dtds
+/build.xml
+/META-INF/
+/persistence
+/web/WEB-INF/classes
