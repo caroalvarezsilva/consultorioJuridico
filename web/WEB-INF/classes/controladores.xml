@@ -20,5 +20,12 @@
                 clase="acciones.CrearProfesor"/>        
     </controlador>
     -->
-    
+        <controlador nombre="AgendaRequest">
+        <hereda-de controlador="Typical"/>
+        
+        <accion nombre="CreateCaseFile" etiqueta = "Crear Expediente"
+        	modo ="ALL"
+               clase="org.consultorioJur.actions.CreateCaseFile"/>     
+                 
+    </controlador>
 </controladores>
