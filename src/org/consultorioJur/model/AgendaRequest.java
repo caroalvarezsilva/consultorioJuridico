@@ -43,12 +43,13 @@ public class AgendaRequest {
 
 	private String problem;
 
-	public Integer getAgendaRequestId() {
-		return agendaRequestId;
-	}
+	@NoModify
+	@NoCreate
+	@OneToOne
+	private CaseFile caseFile;
 
-	public void setAgendaRequestId(Integer agendaRequestId) {
-		this.agendaRequestId = agendaRequestId;
+	public int getAgendaRequestId() {
+		return agendaRequestId;
 	}
 
 	public void setAgendaRequestId(int agendaRequestId) {
@@ -93,6 +94,14 @@ public class AgendaRequest {
 
 	public void setProblem(String problem) {
 		this.problem = problem;
+	}
+
+	public CaseFile getCaseFile() {
+		return caseFile;
+	}
+
+	public void setCaseFile(CaseFile caseFile) {
+		this.caseFile = caseFile;
 	}
 
 }
