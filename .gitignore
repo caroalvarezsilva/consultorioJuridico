@@ -2,4 +2,4 @@
 /build.xml
 /META-INF/
 /persistence
-/web/WEB-INF/classes
+/web/WEB-INF/classes/

@@ -18,7 +18,6 @@ public class AgendaRequest {
 
 	@Column(length = 30)
 	@Required
-	@OnChange(OnChangeDateAction.class)
 	private Date date;
 
 	@NoModify
