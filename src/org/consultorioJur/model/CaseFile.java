@@ -17,11 +17,8 @@ public class CaseFile {
 	@Embedded
 	private CourtCaseFile courtCaseFile;
 	
-
-
-	@NoModify
-	@NoCreate
-	@OneToOne
+	@NoModify @NoCreate @OneToOne
+	@ReferenceView("Simple")
 	private AgendaRequest agendaRequest;
 	
 	@Embedded

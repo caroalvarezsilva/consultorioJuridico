@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class Department {
-	
+
 	@Id
 	private String name;
 
@@ -15,7 +15,5 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 }

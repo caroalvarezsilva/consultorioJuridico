@@ -3,25 +3,21 @@
 <!DOCTYPE controladores SYSTEM "dtds/controladores.dtd">
 
 <controladores>
-    
-    <!-- Variable de entorno: 
-    <var-entorno nombre="ConsultorioJuridico_ANYO_DEFECTO" valor="2015"/>
-    -->
-    
-    
-    <Objeto nombre="ConsultorioJuridico_anyoActivo" clase="java.lang.Integer" valor="2015" 
-            ambito="global"/>
-    
-<!--     <Objeto nombre="day_selected" clase="java.lang.String" valor="Lunes"  -->
-<!--             ambito="global"/> -->
-    
-    
-    <!-- Controlador:
-    <controlador nombre="Profesor">
-        <hereda-de controlador="Typical"/>
-        <accion nombre="new" icono="library-plus" atajo-de-teclado="Control N" 
-                clase="acciones.CrearProfesor"/>        
-    </controlador>
-    -->
-    
+
+	<!-- Variable de entorno: <var-entorno nombre="ConsultorioJuridico_ANYO_DEFECTO" 
+		valor="2015"/> -->
+
+	<!-- Objeto de sesión: <Objeto nombre="ConsultorioJuridico_anyoActivo" 
+		clase="java.lang.Integer" valor="2015" ambito="global"/> -->
+
+	<!-- Controlador: <controlador nombre="Profesor"> <hereda-de controlador="Typical"/> 
+		<accion nombre="new" icono="library-plus" atajo-de-teclado="Control N" clase="acciones.CrearProfesor"/> 
+		</controlador> -->
+	<controlador nombre="AgendaRequest">
+		<hereda-de controlador="Typical" />
+
+		<accion nombre="CreateCaseFile" etiqueta="Crear Expediente"
+			modo="detail" clase="org.consultorioJur.actions.CreateCaseFile" />
+
+	</controlador>
 </controladores>
