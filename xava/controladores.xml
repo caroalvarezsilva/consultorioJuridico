@@ -3,21 +3,48 @@
 <!DOCTYPE controladores SYSTEM "dtds/controladores.dtd">
 
 <controladores>
-
-	<!-- Variable de entorno: <var-entorno nombre="ConsultorioJuridico_ANYO_DEFECTO" 
-		valor="2015"/> -->
-
-	<!-- Objeto de sesión: <Objeto nombre="ConsultorioJuridico_anyoActivo" 
-		clase="java.lang.Integer" valor="2015" ambito="global"/> -->
-
-	<!-- Controlador: <controlador nombre="Profesor"> <hereda-de controlador="Typical"/> 
-		<accion nombre="new" icono="library-plus" atajo-de-teclado="Control N" clase="acciones.CrearProfesor"/> 
-		</controlador> -->
-	<controlador nombre="AgendaRequest">
-		<hereda-de controlador="Typical" />
-
-		<accion nombre="CreateCaseFile" etiqueta="Crear Expediente"
-			modo="detail" clase="org.consultorioJur.actions.CreateCaseFile" />
-
+    
+    <!-- Variable de entorno: 
+    <var-entorno nombre="ConsultorioJuridico_ANYO_DEFECTO" valor="2015"/>
+    -->
+    
+    <!-- Objeto de sesión:
+    <Objeto nombre="ConsultorioJuridico_anyoActivo" clase="java.lang.Integer" valor="2015" 
+            ambito="global"/>
+    -->
+    
+    <!-- Controlador:
+    <controlador nombre="Profesor">
+        <hereda-de controlador="Typical"/>
+        <accion nombre="new" icono="library-plus" atajo-de-teclado="Control N" 
+                clase="acciones.CrearProfesor"/>        
+    </controlador>
+    -->
+    <controlador nombre="AgendaRequest"> <!-- El mismo nombre que la entidad -->
+		<hereda-de controlador="Typical"/> <!-- Hereda todas las acciones de Typical -->
+		<accion nombre="CreateCaseFile" 
+		clase="org.consultorioJur.actions.CreateCaseFile"
+		etiqueta= "Crear Expediente"
+		modo="detail"/>
 	</controlador>
+	
+	<controlador nombre="CaseFileEdition"> <!-- El mismo nombre que la entidad -->
+		<hereda-de controlador="Typical"/> <!-- Hereda todas las acciones de Typical --> 
+		<accion nombre="save"
+			clase="org.consultorioJur.actions.CaseFileEdition"/>
+		<accion nombre="load"
+			clase="org.consultorioJur.actions.LoadCurrentCaseFile"
+			oculta="true"
+			al-iniciar="true"/>
+<!-- 		<accion nombre="new"  confirmar="true" oculta="true" -->
+<!--             clase="org.consultorioJur.actions.NewAction""/> -->
+		
+	</controlador>
+		
+	<objeto nombre="caseFileKey"
+	clase="java.util.Map"
+	ambito="global"/>
+	
+    
+    
 </controladores>

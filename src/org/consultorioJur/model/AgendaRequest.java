@@ -1,5 +1,6 @@
 package org.consultorioJur.model;
 
+import java.io.*;
 import java.util.*;
 
 import javax.persistence.*;
@@ -9,27 +10,26 @@ import org.openxava.annotations.*;
 
 @Entity
 @Views({
-	@View(members = "day,date,groupLawCenter;" + "person;" + "visitReason"),
-	@View(name="Simple", members ="person;" + "visitReason")
-})
+	 @View(members = "Fecha [day,myDate,groupLawCenter ];"  +"Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason"),
+	 @View(name="Simple", members ="Codigo Expediente [agendaRequestId ];"+"person;" + "visitReason")
+	 })
 public class AgendaRequest {
 
 	@Id
-	@Hidden
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int agendaRequestId;
-
+	@Column(length=15)
+	private String agendaRequestId;
+		
 	@Column(length = 30)
 	@Required
-	private Date date;
+	private Date myDate;
 
-	@NoModify
-	@NoCreate
-	@ManyToOne
-	@DescriptionsList(depends = "day", condition = "${groupId} in (SELECT a.groupLawCenter.groupId  FROM GroupLawCenterSchedule a WHERE a.schedule.day = ?)")
+    @NoModify @NoCreate @ManyToOne
+    @DescriptionsList(depends = "day", condition="${groupId} in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a WHERE a.schedule.day = ?)"
+    )
 	private GroupLawCenter groupLawCenter;
 
 	@NoModify
+	@NoCreate
 	@ManyToOne
 	@OnChangeSearch(OnChangeSearchPersonAction.class)
 	private Person person;
@@ -39,19 +39,32 @@ public class AgendaRequest {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@DescriptionsList(descriptionProperties = "reason")
 	private VisitReason visitReason;
-
-	private String problem;
-
+	
 	@NoModify
 	@NoCreate
 	@OneToOne
+
 	private CaseFile caseFile;
 
-	public int getAgendaRequestId() {
+	public CaseFile getCaseFile() {
+		return caseFile;
+	}
+
+	public void setCaseFile(CaseFile caseFile) {
+		this.caseFile = caseFile;
+	}
+
+
+
+	private String problem;
+
+
+
+	public String getAgendaRequestId() {
 		return agendaRequestId;
 	}
 
-	public void setAgendaRequestId(int agendaRequestId) {
+	public void setAgendaRequestId(String agendaRequestId) {
 		this.agendaRequestId = agendaRequestId;
 	}
 
@@ -87,31 +100,27 @@ public class AgendaRequest {
 		this.problem = problem;
 	}
 
-	public CaseFile getCaseFile() {
-		return caseFile;
+
+	public Date getMyDate() {
+		return myDate;
 	}
 
-	public void setCaseFile(CaseFile caseFile) {
-		this.caseFile = caseFile;
+	public void setMyDate(Date myDate) {
+		this.myDate = myDate;
 	}
+	
+	
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	@Depends("date")
-	@LabelFormat(LabelFormatType.NO_LABEL)
-	@Stereotype("LABEL")
-	public String getDay() {
-		if (date == null)
-			return "";
-		String day = new java.text.SimpleDateFormat("EEEE").format(date);
-		return day;
-
-	}
+	@Depends("myDate")
+	@LabelFormat(LabelFormatType.NO_LABEL) 
+    @Stereotype("LABEL")
+    public String getDay() { 
+    		System.out.println("Function getDay");
+        if (myDate == null) return "";
+        String day = new java.text.SimpleDateFormat("EEEE").format(myDate);
+        System.out.println("day: " + day);
+        return day;
+		
+    }
 
 }
