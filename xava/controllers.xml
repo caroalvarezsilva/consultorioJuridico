@@ -21,13 +21,6 @@
     	</action>
 	</controller>    
     -->
-    <controller name="AgendaRequest"> <!-- El mismo nombre que la entidad -->
-		<extends controller="Typical"/> <!-- Hereda todas las acciones de Typical -->
-		<action name="CreateCaseFile" 
-		class="org.consultorioJur.actions.CreateCaseFile"
-		label = "Crear Expediente"
-		mode="detail"
-		keystroke="Control D"/>
-	</controller>
+
 
 </controllers>

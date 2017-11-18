@@ -1,5 +1,6 @@
 package org.consultorioJur.model;
 
+import java.io.*;
 import java.util.*;
 
 import javax.persistence.*;
@@ -8,13 +9,15 @@ import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members = "day,myDate,groupLawCenter;" + "person;" + "visitReason;")
+@Views({
+	 @View(members = "Fecha [day,myDate,groupLawCenter ];"  +"Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason"),
+	 @View(name="Simple", members ="Codigo Expediente [agendaRequestId ];"+"person;" + "visitReason")
+	 })
 public class AgendaRequest {
 
 	@Id
-	@Hidden
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int agendaRequestId;
+	@Column(length=15)
+	private String agendaRequestId;
 		
 	@Column(length = 30)
 	@Required
@@ -36,19 +39,32 @@ public class AgendaRequest {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@DescriptionsList(descriptionProperties = "reason")
 	private VisitReason visitReason;
-
-	private String problem;
-
+	
 	@NoModify
 	@NoCreate
 	@OneToOne
+
 	private CaseFile caseFile;
 
-	public int getAgendaRequestId() {
+	public CaseFile getCaseFile() {
+		return caseFile;
+	}
+
+	public void setCaseFile(CaseFile caseFile) {
+		this.caseFile = caseFile;
+	}
+
+
+
+	private String problem;
+
+
+
+	public String getAgendaRequestId() {
 		return agendaRequestId;
 	}
 
-	public void setAgendaRequestId(int agendaRequestId) {
+	public void setAgendaRequestId(String agendaRequestId) {
 		this.agendaRequestId = agendaRequestId;
 	}
 
@@ -84,13 +100,6 @@ public class AgendaRequest {
 		this.problem = problem;
 	}
 
-	public CaseFile getCaseFile() {
-		return caseFile;
-	}
-
-	public void setCaseFile(CaseFile caseFile) {
-		this.caseFile = caseFile;
-	}
 
 	public Date getMyDate() {
 		return myDate;
@@ -99,6 +108,8 @@ public class AgendaRequest {
 	public void setMyDate(Date myDate) {
 		this.myDate = myDate;
 	}
+	
+	
 
 	@Depends("myDate")
 	@LabelFormat(LabelFormatType.NO_LABEL) 

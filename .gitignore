@@ -1,0 +1,4 @@
+/i18n/portlets
+/persistence
+/web/WEB-INF
+build.xml
