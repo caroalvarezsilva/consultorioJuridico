@@ -32,10 +32,16 @@ String oxVersion = org.openxava.controller.ModuleManager.getVersion();
 </head>
 
 <body <%=NaviOXStyle.getBodyClass(request)%>>
-
-	<div id="main_navigation">
-		<jsp:include page="mainNavigation.jsp"/>
-	</div>
+	<div>
+		<div class="header_background">
+			<div id="organization_title">
+				<jsp:include page="organizationTitle.jsp" />
+			</div>
+			<div id="main_navigation">
+				<jsp:include page="mainNavigation.jsp" />
+			</div>
+		</div>
+		<div>
 	
 	<table width="100%">
 		<tr>

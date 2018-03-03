@@ -29,7 +29,7 @@
 	</controlador>
 	
 	<controlador nombre="CaseFileEdition"> <!-- El mismo nombre que la entidad -->
-		<hereda-de controlador="Typical"/> <!-- Hereda todas las acciones de Typical --> 
+		
 		<accion nombre="save"
 			clase="org.consultorioJur.actions.CaseFileEdition"/>
 		<accion nombre="load"
