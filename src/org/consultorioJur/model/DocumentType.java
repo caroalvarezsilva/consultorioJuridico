@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class DocumentType {
-	
+
 	@Id
 	private String name;
 
@@ -15,7 +15,5 @@ public class DocumentType {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 }

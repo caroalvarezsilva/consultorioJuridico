@@ -8,24 +8,28 @@ import javax.persistence.*;
 import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
+/**
+ * @author caralvarez
+ *
+ */
 @Entity
-@Views({
-	 @View(members = "Fecha [day,myDate,groupLawCenter ];"  +"Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason"),
-	 @View(name="Simple", members ="Codigo Expediente [agendaRequestId ];"+"person;" + "visitReason")
-	 })
+@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "Codigo Expediente [agendaRequestId ];" + "person;"
+		+ "visitReason"),
+		@View(name = "Simple", members = "Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason") })
 public class AgendaRequest {
 
 	@Id
-	@Column(length=15)
+	@Column(length = 15)
 	private String agendaRequestId;
-		
+
 	@Column(length = 30)
 	@Required
-	private Date myDate;
+	private Date date;
 
-    @NoModify @NoCreate @ManyToOne
-    @DescriptionsList(depends = "day", condition="${groupId} in (SELECT a.groupLawCenter.groupId FROM GroupLawCenterSchedule a WHERE a.schedule.day = ?)"
-    )
+	@NoModify
+	@NoCreate
+	@ManyToOne
+	@DescriptionsList(descriptionProperties = "name,day,startTime,endTime", depends = "day", condition = "day= ?")
 	private GroupLawCenter groupLawCenter;
 
 	@NoModify
@@ -39,7 +43,7 @@ public class AgendaRequest {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@DescriptionsList(descriptionProperties = "reason")
 	private VisitReason visitReason;
-	
+
 	@NoModify
 	@NoCreate
 	@OneToOne
@@ -54,11 +58,7 @@ public class AgendaRequest {
 		this.caseFile = caseFile;
 	}
 
-
-
 	private String problem;
-
-
 
 	public String getAgendaRequestId() {
 		return agendaRequestId;
@@ -100,27 +100,25 @@ public class AgendaRequest {
 		this.problem = problem;
 	}
 
+	@Depends("date")
+	@LabelFormat(LabelFormatType.NO_LABEL)
+	@Stereotype("LABEL")
+	public String getDay() {
+		System.out.println("Function getDay");
+		if (date == null)
+			return "";
+		String day = new java.text.SimpleDateFormat("EEEE").format(date);
+		System.out.println("day: " + day);
+		return day;
 
-	public Date getMyDate() {
-		return myDate;
 	}
 
-	public void setMyDate(Date myDate) {
-		this.myDate = myDate;
+	public Date getDate() {
+		return date;
 	}
-	
-	
 
-	@Depends("myDate")
-	@LabelFormat(LabelFormatType.NO_LABEL) 
-    @Stereotype("LABEL")
-    public String getDay() { 
-    		System.out.println("Function getDay");
-        if (myDate == null) return "";
-        String day = new java.text.SimpleDateFormat("EEEE").format(myDate);
-        System.out.println("day: " + day);
-        return day;
-		
-    }
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 }

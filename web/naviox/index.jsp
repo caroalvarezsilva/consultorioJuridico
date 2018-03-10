@@ -17,12 +17,14 @@ String sretainOrder = request.getParameter("retainOrder");
 boolean retainOrder = "true".equals(sretainOrder);
 modules.setCurrent(request.getParameter("application"), request.getParameter("module"), retainOrder);
 String oxVersion = org.openxava.controller.ModuleManager.getVersion();
+String title = (String) request.getAttribute("naviox.pageTitle");
+if (title == null) title = modules.getCurrentModuleDescription(request);
 %>
 
 <!DOCTYPE html>
 
 <head>
-	<title><%=modules.getCurrentModuleDescription(request)%></title>
+	<title><%=title%></title>
 	<link href="<%=request.getContextPath()%>/xava/style/layout.css?ox=<%=oxVersion%>" rel="stylesheet" type="text/css"> 
 	<link href="<%=request.getContextPath()%>/naviox/style/naviox.css?ox=<%=oxVersion%>" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/xava/style/materialdesignicons.css?ox=<%=oxVersion%>">
@@ -32,6 +34,7 @@ String oxVersion = org.openxava.controller.ModuleManager.getVersion();
 </head>
 
 <body <%=NaviOXStyle.getBodyClass(request)%>>
+
 	<div>
 		<div class="header_background">
 			<div id="organization_title">
@@ -41,8 +44,7 @@ String oxVersion = org.openxava.controller.ModuleManager.getVersion();
 				<jsp:include page="mainNavigation.jsp" />
 			</div>
 		</div>
-		<div>
-	
+	<div>
 	<table width="100%">
 		<tr>
 			<td id="modules_list">				

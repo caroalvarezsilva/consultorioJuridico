@@ -19,6 +19,16 @@ public class GroupLawCenter {
 	@Required
 	private String name;
 
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Column(length = 30)
 	@Required
 	private String place;
@@ -26,11 +36,44 @@ public class GroupLawCenter {
 	@OneToMany
 	private List<AgendaRequest> agendaRequests;
 
-	@OneToMany(mappedBy = "groupLawCenter")
-	private Collection<GroupLawCenterSchedule> groupLawCenterSchedules;
+	@Column(length = 30)
+	@Required
+	private String day;
 
-	@ManyToMany(mappedBy = "groupLawCenters")
-	private List<Teacher> teacher;
+	@Column(length = 30)
+	@Required
+	private String startTime;
+
+	@Column(length = 30)
+	@Required
+	private String endTime;
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	@ManyToOne
+	private Teacher teacher;
 
 	public String getName() {
 		return name;
@@ -48,14 +91,6 @@ public class GroupLawCenter {
 		this.place = place;
 	}
 
-	public Collection<GroupLawCenterSchedule> getGroupLawCenterSchedules() {
-		return groupLawCenterSchedules;
-	}
-
-	public void setGroupLawCenterSchedules(Collection<GroupLawCenterSchedule> groupLawCenterSchedules) {
-		this.groupLawCenterSchedules = groupLawCenterSchedules;
-	}
-
 	public int getGroupId() {
 		return groupId;
 	}
@@ -64,16 +99,16 @@ public class GroupLawCenter {
 		this.groupId = groupId;
 	}
 
-	public List<Teacher> getTeacher() {
+	public List<AgendaRequest> getAgendaRequests() {
+		return agendaRequests;
+	}
+
+	public Teacher getTeacher() {
 		return teacher;
 	}
 
-	public void setTeacher(List<Teacher> teacher) {
+	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
-	}
-
-	public List<AgendaRequest> getAgendaRequests() {
-		return agendaRequests;
 	}
 
 	public void setAgendaRequests(List<AgendaRequest> agendaRequests) {
