@@ -10,8 +10,8 @@ import org.openxava.jpa.*;
 
 public class LoadCurrentCaseFile extends SearchByViewKeyAction { // Para llenar la vista a partir de la clave
 	@Inject 
-	private Map caseFileKey; // Para coger el valor del objeto de sesión
-	// invoicing_currentInvoiceKey, llenado en el módulo Order
+	private Map caseFileKey; // Para coger el valor del objeto de sesiï¿½n
+	// invoicing_currentInvoiceKey, llenado en el mï¿½dulo Order
 	public void execute() throws Exception {
 	getView().setValues(caseFileKey); // Pone la clave en la vista
 	

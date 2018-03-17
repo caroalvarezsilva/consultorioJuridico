@@ -1,3 +1,67 @@
-/*
-Put here your own style
-*/
+a {
+	color: #731c4f;
+}
+
+.header_logo {
+	background-image: url("../images/background.png")
+}
+
+.header_background {
+	background-image: linear-gradient(to bottom, #5e344e 0%, #c793b6 100%);
+}
+
+.ox-bottom-buttons input:nth-of-type(2), .ipad .ox-bottom-buttons input:nth-of-type(2):hover,
+	.ox-discussion-post-button input[type="button"]:nth-of-type(1) {
+	background: #731c4f;
+	color: white;
+}
+
+.ox-bottom-buttons input:nth-of-type(2), .ipad .ox-bottom-buttons input:nth-of-type(2):hover,
+	.ox-discussion-post-button input[type="button"]:nth-of-type(1) {
+	background: #731c4f;
+	border-color: #731c4f;
+	color: white;
+	box-shadow: 0px 1px 3px purple;
+	-moz-box-shadow: 0px 1px 3px purple;
+	-webkit-box-shadow: 0px 1px 3px purple;
+}
+
+.ox-bottom-buttons input:nth-of-type(2):hover,
+	.ox-discussion-post-button input:nth-of-type(1):hover {
+	color: white;
+	background: purple;
+	border-color: purple;
+	box-shadow: 0px 1px 7px purple;
+	-moz-box-shadow: 0px 1px 7px purple;
+	-webkit-box-shadow: 0px 1px 7px purple;
+}
+
+#welcome h1 {
+	font-weight: normal;
+	font-size: 25px;
+	color: #505050;
+	margin-bottom: 5px;
+}
+
+.ox-messages .ox-message-box {
+	background: #eddee8;
+	color: #731c4f
+}
+
+.ox-errors .ox-message-box {	
+	background: #DC4A38;
+}
+
+i.ox-required-icon  {
+	font-size: 100%;
+	color: #731c4f;
+	top: -9px; 
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus, select:focus, textarea:focus, #module .cke_focus { 
+	outline: 0;
+	border-color: #eddee8;
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgb(237,222,232);
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgb(237,222,232);
+	box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 0 8px rgb(237,222,232)	;
+}

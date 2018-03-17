@@ -1,51 +1,44 @@
 package org.consultorioJur.model;
 
-
 import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
-
 @Entity
 
 public class CaseFile {
-	
-	
+
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer caseFileId;
-	
+
 	@Embedded
 	private CourtCaseFile courtCaseFile;
-	
 
 	@NoModify
 	@NoCreate
-	@OneToOne 
+	@OneToOne
 	@ReferenceView("Simple")
 	private AgendaRequest agendaRequest;
 
-	
 	public AgendaRequest getAgendaRequest() {
 		return agendaRequest;
 	}
 
-
 	public void setAgendaRequest(AgendaRequest agendaRequest) {
 		this.agendaRequest = agendaRequest;
 	}
-	
 
 	@Embedded
 	private Archived archived;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@DescriptionsList
 	@NoModify
 	@NoCreate
 	private TypeOfManagment typeOfManagment;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@DescriptionsList
 	@NoModify
@@ -55,19 +48,15 @@ public class CaseFile {
 	public Integer getCaseFileId() {
 		return caseFileId;
 	}
-	
 
 	public void setCaseFileId(Integer caseFileId) {
 		this.caseFileId = caseFileId;
 	}
 
-
-
 	public TypeOfManagment getTypeOfManagment() {
 		return typeOfManagment;
 	}
 
-	
 	public void setTypeOfManagment(TypeOfManagment typeOfManagment) {
 		this.typeOfManagment = typeOfManagment;
 	}
@@ -82,7 +71,7 @@ public class CaseFile {
 
 	public Archived getArchived() {
 		return archived;
-	} 
+	}
 
 	public void setArchived(Archived archived) {
 		this.archived = archived;
@@ -96,5 +85,4 @@ public class CaseFile {
 		this.courtCaseFile = courtCaseFile;
 	}
 
-	
 }
