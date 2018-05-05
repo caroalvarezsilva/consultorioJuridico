@@ -2,16 +2,15 @@ package org.consultorioJur.actions;
 
 import org.openxava.actions.*;
 
-public class CaseFileEdition extends SaveAction // Acción estándar de OpenXava para grabar el contenido de la vista
-	implements IChangeModuleAction // Para navegación entre módulos
-	
+public class CaseFileEdition extends SaveAction // Acciï¿½n estï¿½ndar de OpenXava para grabar el contenido de la vista
+	implements IChangeModuleAction // Para navegaciï¿½n entre mï¿½dulos
 	
 	
 	{
 	public String getNextModule() {
-	return PREVIOUS_MODULE; // Vuelve al módulo que llamó, Order en este caso
+	return PREVIOUS_MODULE; // Vuelve al mï¿½dulo que llamï¿½, Order en este caso
 	}
 	public boolean hasReinitNextModule() {
-	return false; // No queremos inicializar el módulo Order
+	return false; // No queremos inicializar el mï¿½dulo Order
 	}
 	}

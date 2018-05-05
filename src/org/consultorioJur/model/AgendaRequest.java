@@ -13,9 +13,9 @@ import org.openxava.annotations.*;
  *
  */
 @Entity
-@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "Codigo Expediente [agendaRequestId ];" + "person;"
-		+ "visitReason"),
-		@View(name = "Simple", members = "Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason") })
+@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "agendaRequestId;" + "person;"
+		+ "visitReason;" + "problem;"),
+		@View(name = "Simple", members = "Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason;" + "problem;") })
 public class AgendaRequest {
 
 	@Id
@@ -33,7 +33,6 @@ public class AgendaRequest {
 	private GroupLawCenter groupLawCenter;
 
 	@NoModify
-	@NoCreate
 	@ManyToOne
 	@OnChangeSearch(OnChangeSearchPersonAction.class)
 	private Person person;
@@ -104,11 +103,31 @@ public class AgendaRequest {
 	@LabelFormat(LabelFormatType.NO_LABEL)
 	@Stereotype("LABEL")
 	public String getDay() {
-		System.out.println("Function getDay");
 		if (date == null)
 			return "";
-		String day = new java.text.SimpleDateFormat("EEEE").format(date);
-		System.out.println("day: " + day);
+		String day = "";
+		switch (date.getDay()) {
+		case 0:
+	        day = "Domingo";
+	        break;
+	    case 1:
+	        day = "Lunes";
+	        break;
+	    case 2:
+	        day = "Martes";
+	        break;
+	    case 3:
+	        day = "Miercoles";
+	        break;
+	    case 4:
+	        day = "Jueves";
+	        break;
+	    case 5:
+	        day = "Viernes";
+	        break;
+	    case 6:
+	        day = "Sabado";
+		}
 		return day;
 
 	}

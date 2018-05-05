@@ -39,11 +39,11 @@ public class CreateCaseFile  extends ViewBaseAction implements IChangeModuleActi
 			XPersistence.getManager().persist(caseFile);
 			caseFileKey = toKey(caseFile);
 			agendaRequest.setCaseFile(caseFile);
-			addMessage("Se creo el expediente");
+			addMessage("Se creÃ³ el expediente");
 		}
 	}
 
-	// en el objeto de sesión invoicing_ currentInvoiceKey
+	// en el objeto de sesiï¿½n invoicing_ currentInvoiceKey
 	private Map toKey(CaseFile caseFile) { // Extrae la clave de la factura en formato mapa
 	Map key = new HashMap();
 	key.put("caseFileId",caseFile.getCaseFileId());

@@ -7,7 +7,6 @@ import javax.persistence.*;
 import org.openxava.annotations.*;
 
 @Entity
-@View(members = "name,place")
 public class GroupLawCenter {
 
 	@Id
@@ -33,8 +32,7 @@ public class GroupLawCenter {
 	@Required
 	private String place;
 
-	@OneToMany
-	private List<AgendaRequest> agendaRequests;
+	
 
 	@Column(length = 30)
 	@Required
@@ -47,6 +45,9 @@ public class GroupLawCenter {
 	@Column(length = 30)
 	@Required
 	private String endTime;
+	
+	@OneToMany
+	private List<AgendaRequest> agendaRequests;
 
 	public String getDay() {
 		return day;

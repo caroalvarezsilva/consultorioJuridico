@@ -14,6 +14,10 @@
 		<accion nombre="CreateCaseFile" clase="org.consultorioJur.actions.CreateCaseFile"
 			etiqueta="Crear Expediente" modo="detail" 
 			 disponible-en-nuevo="false"/>
+		<accion nombre="printPdf" modo="detail"
+			clase="org.consultorioJur.actions.AgendaRequestReport"
+			imagen="pdf.gif">										
+		</accion>
 	</controlador>
 
 	<controlador nombre="CaseFileEdition"> <!-- El mismo nombre que la entidad -->

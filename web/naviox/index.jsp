@@ -34,15 +34,16 @@ if (title == null) title = modules.getCurrentModuleDescription(request);
 </head>
 
 <body <%=NaviOXStyle.getBodyClass(request)%>>
-	
+
 	<div class="header_background">
 		<div id="organization_title">
 			<jsp:include page="organizationTitle.jsp" />
 		</div>
 		<div id="main_navigation">
-			<jsp:include page="mainNavigation.jsp"/>
-		</div>º
+			<jsp:include page="mainNavigation.jsp" />
+		</div>
 	</div>
+	
 	
 	<table width="100%">
 		<tr>
@@ -63,8 +64,7 @@ if (title == null) title = modules.getCurrentModuleDescription(request);
 	
 			<td valign="top">
 				<div class="module-wrapper">
-			
-	<% if ("SignIn".equals(module)) {  %>
+					<% if ("SignIn".equals(module)) {  %>
 					<jsp:include page='signIn.jsp'/>
 					<% } else { %>
 					<div id="module_description">

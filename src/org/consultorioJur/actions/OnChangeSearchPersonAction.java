@@ -13,7 +13,7 @@ public class OnChangeSearchPersonAction extends OnChangeSearchAction{
 		//Map keyValues = getView().getKeyValuesWithValue();
 		//if (keyValues.isEmpty()) return;
 		//Person person = (Person)MapFacade.findEntity(getView().getModelName(), keyValues);
-		getView().setEditable(true);
+		//getView().setEditable();
 	}
 
 }
