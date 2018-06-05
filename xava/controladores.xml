@@ -4,30 +4,33 @@
 
 <controladores>
 	<controlador nombre="AgendaRequest"> 
-		<hereda-de controlador="Typical"/>
-<!-- 		<var-entorno nombre="XAVA_SEARCH_ACTION" valor="AgendaRequest.SearchAgenda"/> -->
-<!-- 		<accion nombre="SearchAgenda" modo="list"  -->
-<!-- 			clase="org.consultorioJur.actions.SearchAgendaRequest">  -->
-<!-- 			<usa-objeto nombre="xava_view"/> -->
-<!-- 		 </accion> -->
-
-		<accion nombre="CreateCaseFile" clase="org.consultorioJur.actions.CreateCaseFile"
+<!-- 		<hereda-de controlador="Typical"/> -->
+		<accion nombre="CreateCaseFile" clase="org.consultorioJur.actions.CreateCaseFile" 
 			etiqueta="Crear Expediente" modo="detail" 
 			 disponible-en-nuevo="false"/>
+	 	<accion nombre="UpdateCaseFile" clase="org.consultorioJur.actions.CreateCaseFile" 
+			etiqueta="Ver Expediente" modo="detail" 
+			 disponible-en-nuevo="false"/>
+		<accion nombre="searchAgenda" modo="detail" oculta="true"
+			clase="org.consultorioJur.actions.SearchAgenda"/>
 		<accion nombre="printPdf" modo="detail"
+			disponible-en-nuevo="false"
 			clase="org.consultorioJur.actions.AgendaRequestReport"
 			imagen="pdf.gif">										
 		</accion>
 	</controlador>
+	
+	<controlador nombre="AgendaRequestModalPerson">
+    		<accion nombre="add"
+        		clase="org.consultorioJur.actions.AgendaRequestAddPerson"/>
+        <accion nombre="cancel"
+        		clase="org.consultorioJur.actions.AgendaRequestCancelAddPerson"/>
+	</controlador>
 
 	<controlador nombre="CaseFileEdition"> <!-- El mismo nombre que la entidad -->
-
 		<accion nombre="save" clase="org.consultorioJur.actions.CaseFileEdition" />
-
 		<accion nombre="load" clase="org.consultorioJur.actions.LoadCurrentCaseFile"
 			oculta="true" al-iniciar="true" />
-	
-
 	</controlador>
 
 	<objeto nombre="caseFileKey" clase="java.util.Map" ambito="global" />

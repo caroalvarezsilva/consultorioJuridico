@@ -35,14 +35,20 @@ if (title == null) title = modules.getCurrentModuleDescription(request);
 
 <body <%=NaviOXStyle.getBodyClass(request)%>>
 
+<!-- 	<div id="main_navigation"> -->
+<%-- 		<jsp:include page="mainNavigation.jsp"/> --%>
+<!-- 	</div> -->
+	
 	<div class="header_background">
-		<div id="organization_title">
-			<jsp:include page="organizationTitle.jsp" />
-		</div>
-		<div id="main_navigation">
-			<jsp:include page="mainNavigation.jsp" />
-		</div>
+			<div id="organization_title">
+				<jsp:include page="organizationTitle.jsp" />
+			</div>
+			<div id="main_navigation">
+				<jsp:include page="mainNavigation.jsp" />
+			</div>
 	</div>
+	
+	
 	
 	
 	<table width="100%">
@@ -69,9 +75,9 @@ if (title == null) title = modules.getCurrentModuleDescription(request);
 					<% } else { %>
 					<div id="module_description">
 						<%=modules.getCurrentModuleDescription(request)%> 
-						<a href="javascript:naviox.bookmark()" title="<xava:message key='<%=modules.isCurrentBookmarked()?"unbookmark_module":"bookmark_module"%>'/>">
-							<img id="bookmark" src="<%=request.getContextPath()%>/naviox/images/bookmark-<%=modules.isCurrentBookmarked()?"on":"off"%>.png"/>
-						</a>
+<%-- 						<a href="javascript:naviox.bookmark()" title="<xava:message key='<%=modules.isCurrentBookmarked()?"unbookmark_module":"bookmark_module"%>'/>"> --%>
+<%-- 							<img id="bookmark" src="<%=request.getContextPath()%>/naviox/images/bookmark-<%=modules.isCurrentBookmarked()?"on":"off"%>.png"/> --%>
+<!-- 						</a> -->
 					</div>				
 					<div id="module"> 	
 						<jsp:include page='<%="../xava/module.jsp?application=" + app + "&module=" + module + "&htmlHead=false"%>'/>
