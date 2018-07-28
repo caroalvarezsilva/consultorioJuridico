@@ -13,14 +13,20 @@ import org.openxava.annotations.*;
  *
  */
 @Entity
-@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "agendaRequestId;" + "person;"
-		+ "visitReason;" + "problem;"),
-		@View(name = "Simple", members = "Codigo Expediente [agendaRequestId ];" + "person;" + "visitReason;" + "problem;") })
+@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "folderNumber;" + "person;" + "visitReason;"
+		+ "problem;"),
+		@View(name = "Simple", members = "Codigo Expediente [folderNumber ];" + "person;" + "visitReason;"
+				+ "problem;") })
 public class AgendaRequest {
 
 	@Id
-	@Column(length = 15)
-	private String agendaRequestId;
+	@Hidden
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int agendaRequestId;
+
+	@Column(unique = true, length = 15)
+	@Required
+	private String folderNumber;
 
 	@Column(length = 30)
 	@Required
@@ -32,7 +38,7 @@ public class AgendaRequest {
 	@DescriptionsList(descriptionProperties = "name,day,startTime,endTime", depends = "day", condition = "day= ?")
 	private GroupLawCenter groupLawCenter;
 
-	@NoModify
+	
 	@ManyToOne
 	@OnChangeSearch(OnChangeSearchPersonAction.class)
 	private Person person;
@@ -58,14 +64,6 @@ public class AgendaRequest {
 	}
 
 	private String problem;
-
-	public String getAgendaRequestId() {
-		return agendaRequestId;
-	}
-
-	public void setAgendaRequestId(String agendaRequestId) {
-		this.agendaRequestId = agendaRequestId;
-	}
 
 	public GroupLawCenter getGroupLawCenter() {
 		return groupLawCenter;
@@ -108,25 +106,25 @@ public class AgendaRequest {
 		String day = "";
 		switch (date.getDay()) {
 		case 0:
-	        day = "Domingo";
-	        break;
-	    case 1:
-	        day = "Lunes";
-	        break;
-	    case 2:
-	        day = "Martes";
-	        break;
-	    case 3:
-	        day = "Miercoles";
-	        break;
-	    case 4:
-	        day = "Jueves";
-	        break;
-	    case 5:
-	        day = "Viernes";
-	        break;
-	    case 6:
-	        day = "Sabado";
+			day = "Domingo";
+			break;
+		case 1:
+			day = "Lunes";
+			break;
+		case 2:
+			day = "Martes";
+			break;
+		case 3:
+			day = "Miercoles";
+			break;
+		case 4:
+			day = "Jueves";
+			break;
+		case 5:
+			day = "Viernes";
+			break;
+		case 6:
+			day = "Sabado";
 		}
 		return day;
 
@@ -138,6 +136,22 @@ public class AgendaRequest {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public int getAgendaRequestId() {
+		return agendaRequestId;
+	}
+
+	public void setAgendaRequestId(int agendaRequestId) {
+		this.agendaRequestId = agendaRequestId;
+	}
+
+	public String getFolderNumber() {
+		return folderNumber;
+	}
+
+	public void setFolderNumber(String folderNumber) {
+		this.folderNumber = folderNumber;
 	}
 
 }

@@ -1,26 +1,18 @@
 package org.consultorioJur.actions;
 
-import java.text.DateFormat;
-import java.util.*;
+import org.consultorioJur.model.*;
+import org.openxava.actions.*;
 
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.consultorioJur.model.*;
+import java.text.*;
+import java.util.*;
+
+import javax.persistence.*;
 import org.consultorioJur.model.Person.*;
-import org.openxava.actions.IChainAction;
-import org.openxava.actions.JasperReportBaseAction;
 import org.openxava.jpa.*;
-import org.openxava.model.MapFacade;
-import org.openxava.util.Messages;
-import org.openxava.validators.ValidationException;
 
-
-
-
-public class AgendaRequestReport extends JasperReportBaseAction  {
+public class AgendaRequestReport extends JasperReportBaseAction {
 
 	
 	
@@ -36,7 +28,7 @@ public class AgendaRequestReport extends JasperReportBaseAction  {
 	@Override
 	protected String getJRXML() throws Exception {
 		// TODO Auto-generated method stub
-		return "/Users/caralvarez/Personal/Facultad/Proyecto/AgendaRequest.jrxml";
+		return "AgendaRequest.jrxml";
 	}
 
 	@Override
@@ -45,8 +37,13 @@ public class AgendaRequestReport extends JasperReportBaseAction  {
 
 		
 		//traigo la agenda la persona y el grupo de atencion
-		String id =getView().getValueString("agendaRequestId");
-		AgendaRequest agendaRequest = XPersistence.getManager().find(AgendaRequest.class, id); 
+		String folderNumber =getView().getValueString("folderNumber");
+		String sql = "SELECT ar FROM AgendaRequest ar WHERE folderNumber = :folderNumber";
+		Query query = XPersistence.getManager().createQuery(sql);
+		query.setParameter("folderNumber", folderNumber);
+		AgendaRequest agendaRequest = (AgendaRequest) query.getSingleResult();
+	    
+		//AgendaRequest agendaRequest = XPersistence.getManager().findByFolderName(AgendaRequest.class, id); 
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();
 		Person person = agendaRequest.getPerson();
 		String personName = person.getName();
@@ -54,11 +51,15 @@ public class AgendaRequestReport extends JasperReportBaseAction  {
 		personName = personName.concat(person.getLastName());
 
 		Map parameters = new HashMap();				
-		parameters.put("agendaRequestId",id);
+		parameters.put("agendaRequestId",folderNumber);
 		parameters.put("personName", personName);
 		parameters.put("group", (String)glc.getName());
 		parameters.put("place", (String)glc.getPlace());
-		parameters.put("day", (String)glc.getDay());
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		String date  = dateFormat.format(agendaRequest.getDate());
+	
+		parameters.put("day", date);
 		
 		String hourst = glc.getStartTime();
 		hourst = hourst.concat(" a ");

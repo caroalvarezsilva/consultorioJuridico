@@ -16,7 +16,7 @@ public class PersonTest {
 		private UserType userType;
 
 		public enum UserType {
-			STUDENT, TEACHER, PUBLIC_OFFICIAL
+			STUDENT, TEACHER, PUBLICOFFICIAL
 		};
 
 
