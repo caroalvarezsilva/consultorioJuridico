@@ -1,3 +1,4 @@
+*.project
 /i18n/portlets
 /persistence
 /web/WEB-INF

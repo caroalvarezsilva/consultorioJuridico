@@ -6,10 +6,11 @@
 String language = "es".equals(request.getLocale().getLanguage()) || "ca".equals(request.getLocale().getLanguage())?"es":"en";
 %>
 
-<div id="first_steps">
-<p><xava:message key="first_steps_p1"/></p>
-<p class="screenshot"><img src="../naviox/images/modules-screenshot_<%=language%>.png"/></p>
-<p><xava:message key="first_steps_p2"/></p>
-<p class="screenshot"><img src="../naviox/images/list-mode-screenshot_<%=language%>.png"/></p>
-<p><xava:message key="first_steps_p3"/></p>
-</div>
+<!-- <div id="first_steps"> -->
+<%-- <p><xava:message key="first_steps_p1"/></p> --%>
+<%-- <p class="screenshot"><img src="../naviox/images/modules-screenshot_<%=language%>.png"/></p> --%>
+<%-- <p><xava:message key="first_steps_p2"/></p> --%>
+<%-- <p class="screenshot"><img src="../naviox/images/list-mode-screenshot_<%=language%>.png"/></p> --%>
+<%-- <p><xava:message key="first_steps_p3"/></p> --%>
+<!-- </div> -->
+<jsp:forward page="/m/TodayAgendaRequest"/>

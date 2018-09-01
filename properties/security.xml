@@ -1,7 +1,7 @@
 <security>
 	<role rolename="admin">
-    		<permission object="all" action="all"/>
-  	</role>
+		<permission object="all" action="all" />
+	</role>
 	<role rolename="student">
 		<permission object="Department" action="all" />
 		<permission object="AgendaRequest" action="all" />
@@ -12,13 +12,13 @@
 		<permission object="Person" action="all" />
 		<permission object="GroupLawCenter" action="all" />
 	</role>
-	
+
 	<role rolename="teacher">
 		<permission object="AgendaRequest" action="all" />
 		<permission object="TypeOfTrial" action="all" />
 	</role>
-	
-	<userType userTypeName="student" roles="student"/>
-	<userType userTypeName="publicOfficial" roles="publicOfficial"/>
-	<userType userTypeName="teacher" roles="teacher"/>
+
+	<userType userTypeName="student" roles="student" />
+	<userType userTypeName="publicOfficial" roles="publicOfficial" />
+	<userType userTypeName="teacher" roles="teacher" />
 </security>
