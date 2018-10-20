@@ -15,9 +15,16 @@ public class Address {
 	@ManyToOne(optional = true)
 	@DescriptionsList
 	private Department department;
+	
+	@NoModify
+	@NoCreate
+	@ManyToOne(optional = true)
+	@DescriptionsList(
+			 depends="this.department",
+			 condition="${department.name} = ?" 
+			)
+	private Neighborhood neighborhood;
 
-	@Column(length = 30)
-	private String neighborhood;
 
 	public String getStreet() {
 		return street;
@@ -35,12 +42,11 @@ public class Address {
 		this.department = department;
 	}
 
-	public String getNeighborhood() {
+	public Neighborhood getNeighborhood() {
 		return neighborhood;
 	}
 
-	public void setNeighborhood(String neighborhood) {
+	public void setNeighborhood(Neighborhood neighborhood) {
 		this.neighborhood = neighborhood;
 	}
-
 }
