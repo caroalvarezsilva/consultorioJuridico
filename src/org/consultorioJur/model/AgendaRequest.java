@@ -1,6 +1,5 @@
 package org.consultorioJur.model;
 
-import java.io.*;
 import java.util.*;
 
 import javax.persistence.*;
@@ -18,6 +17,7 @@ import org.openxava.calculators.*;
 		+ "problem;"),
 		@View(name = "Simple", members = "Codigo Expediente [folderNumber ];" + "person;" + "visitReason;"
 				+ "problem;") })
+@Tab()
 public class AgendaRequest {
 
 

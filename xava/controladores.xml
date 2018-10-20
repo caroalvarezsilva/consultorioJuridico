@@ -3,6 +3,7 @@
 <!DOCTYPE controladores SYSTEM "dtds/controladores.dtd">
 
 <controladores>
+
 	<controlador nombre="AgendaRequest"> 
 <!-- 		<hereda-de controlador="Typical"/> -->
 		<accion nombre="CreateCaseFile" clase="org.consultorioJur.actions.CreateCaseFile" 
@@ -16,8 +17,16 @@
 		<accion nombre="printPdf" modo="detail"
 			disponible-en-nuevo="false"
 			clase="org.consultorioJur.actions.AgendaRequestReport"
-			imagen="pdf.gif">										
-		</accion>
+			imagen="pdf.gif"/>		
+	</controlador>
+	
+	<controlador nombre="TodayAgendaRequest">
+    		<hereda-de controlador="AgendaRequest"/> 
+    		<accion nombre="SetTodayDate" modo="detail"
+			al-iniciar="true"
+			antes-de-cada-peticion="true"
+			oculta="true"
+			clase="org.consultorioJur.actions.InitialConfigForTodayAgendaRequest"/>	
 	</controlador>
 	
 	<controlador nombre="AgendaRequestModalPerson">
@@ -46,7 +55,5 @@
 		</accion>
 	</controlador>
 	<objeto nombre="caseFileKey" clase="java.util.Map" ambito="global" />
-
-
 
 </controladores>
