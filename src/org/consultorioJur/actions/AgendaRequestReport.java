@@ -45,16 +45,26 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 	    
 		//AgendaRequest agendaRequest = XPersistence.getManager().findByFolderName(AgendaRequest.class, id); 
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();
+
 		Person person = agendaRequest.getPerson();
-		String personName = person.getName();
+		String personName = "";
+		personName = personName.concat(person.getName());
 		personName = personName.concat(" ");
 		personName = personName.concat(person.getLastName());
 
 		Map parameters = new HashMap();				
 		parameters.put("agendaRequestId",folderNumber);
 		parameters.put("personName", personName);
-		parameters.put("group", (String)glc.getName());
-		parameters.put("place", (String)glc.getPlace());
+		String glcName = (String)glc.getName();
+		if (glcName == null)
+			glcName = "";
+		parameters.put("group", glcName);
+		
+		String glcPlace = (String)glc.getPlace();
+		if (glcPlace == null)
+			glcPlace = "";
+		parameters.put("place", glcPlace);
+
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String date  = dateFormat.format(agendaRequest.getDate());
@@ -90,10 +100,11 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 			
 		a= a.concat(" ");
 		a= a.concat(address.getNeighborhood());
-		a= a.concat(" ");
-		a= a.concat(address.getStreet());
+
+		String sa = address.getStreet();
 		
-		parameters.put("address", a);
+		parameters.put("address", sa);
+		parameters.put("addressB", a);
 		parameters.put("salary", person.getSalary());
 		
 		DocumentType dt = person.getDocumentType();

@@ -7,7 +7,7 @@ import org.openxava.annotations.*;
 @Embeddable
 public class Address {
 
-	@Column(length = 50)
+	@Column(length = 150)
 	private String street;
 
 	@NoModify

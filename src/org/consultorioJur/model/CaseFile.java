@@ -33,17 +33,8 @@ public class CaseFile {
 	@Embedded
 	private Archived archived;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@DescriptionsList
-	@NoModify
-	@NoCreate
-	private TypeOfManagment typeOfManagment;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-	@DescriptionsList
-	@NoModify
-	@NoCreate
-	private TypeOfTrial typeOfTrial;
+
 
 	public Integer getCaseFileId() {
 		return caseFileId;
@@ -53,21 +44,7 @@ public class CaseFile {
 		this.caseFileId = caseFileId;
 	}
 
-	public TypeOfManagment getTypeOfManagment() {
-		return typeOfManagment;
-	}
 
-	public void setTypeOfManagment(TypeOfManagment typeOfManagment) {
-		this.typeOfManagment = typeOfManagment;
-	}
-
-	public TypeOfTrial getTypeOfTrial() {
-		return typeOfTrial;
-	}
-
-	public void setTypeOfTrial(TypeOfTrial typeOfTrial) {
-		this.typeOfTrial = typeOfTrial;
-	}
 
 	public Archived getArchived() {
 		return archived;

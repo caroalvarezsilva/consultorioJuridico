@@ -45,6 +45,7 @@ public class CreateCaseFile  extends ViewBaseAction implements IChangeModuleActi
 			agendaRequest.setCaseFile(caseFile);
 			addMessage("Se creó el expediente");
 		}
+		setNextMode(LIST);
 	}
 
 	// en el objeto de sesi�n invoicing_ currentInvoiceKey
