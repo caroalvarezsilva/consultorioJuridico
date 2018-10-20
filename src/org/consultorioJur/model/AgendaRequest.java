@@ -5,24 +5,33 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.consultorioJur.actions.*;
+import org.consultorioJur.calculators.*;
 import org.openxava.annotations.*;
-
+import org.openxava.calculators.*;
 /**
  * @author caralvarez
  *
  */
 @Entity
-@Views({ @View(members = "Fecha [day,date,groupLawCenter ];" + "folderNumber;" + "person;" + "visitReason;"
+@Views({ @View(members = "Fecha [day,date,groupLawCenter ];"  + "folderNumber, visitDate;" + "person;" + "visitReason;"
 		+ "problem;"),
 		@View(name = "Simple", members = "Codigo Expediente [folderNumber ];" + "person;" + "visitReason;"
 				+ "problem;") })
 @Tab()
 public class AgendaRequest {
 
+
 	@Id
 	@Hidden
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int agendaRequestId;
+	
+
+	@Column(length = 10)
+	@ReadOnly
+	@DefaultValueCalculator(CalculateStringDate.class) // Current date
+	private String visitDate;
+
 
 	@Column(unique = true, length = 15)
 	@Required
@@ -88,7 +97,7 @@ public class AgendaRequest {
 	public void setVisitReason(VisitReason visitReason) {
 		this.visitReason = visitReason;
 	}
-
+	@Column(length = 350)
 	public String getProblem() {
 		return problem;
 	}
@@ -137,7 +146,6 @@ public class AgendaRequest {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 	public int getAgendaRequestId() {
 		return agendaRequestId;
 	}
@@ -152,6 +160,14 @@ public class AgendaRequest {
 
 	public void setFolderNumber(String folderNumber) {
 		this.folderNumber = folderNumber;
+	}
+	
+	public String getVisitDate() {
+		return visitDate;
+	}
+
+	public void setVisitDate(String visitDate) {
+		this.visitDate = visitDate;
 	}
 
 }

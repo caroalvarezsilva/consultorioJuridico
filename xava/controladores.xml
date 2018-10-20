@@ -43,10 +43,22 @@
 
 	<controlador nombre="CaseFileEdition"> <!-- El mismo nombre que la entidad -->
 		<accion nombre="save" clase="org.consultorioJur.actions.CaseFileEdition" />
+		<accion nombre="cancel" clase="org.consultorioJur.actions.CaseFileCancel" />
 		<accion nombre="load" clase="org.consultorioJur.actions.LoadCurrentCaseFile"
 			oculta="true" al-iniciar="true" />
+		<accion nombre="printPdf" modo="detail"
+			disponible-en-nuevo="false"
+			clase="org.consultorioJur.actions.CaseFileReport"
+			imagen="pdf.gif">										
+		</accion>
 	</controlador>
-
+		<controlador nombre="CaseFile"> 
+		<accion nombre="printPdf" modo="detail"
+			disponible-en-nuevo="false"
+			clase="org.consultorioJur.actions.CaseFileReport"
+			imagen="pdf.gif">										
+		</accion>
+	</controlador>
 	<objeto nombre="caseFileKey" clase="java.util.Map" ambito="global" />
 
 </controladores>

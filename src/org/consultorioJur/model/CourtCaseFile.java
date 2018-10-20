@@ -6,10 +6,13 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+
 @View(members="Expediente[courtFile,court;"
-		+"subject, courtdate;"
+		+ " courtdate;"
+		+"subject, typeOfTrial;"
 		+ "descriptionFile];"
 		)
+
 @Embeddable
 public class CourtCaseFile {
 	
@@ -21,7 +24,17 @@ public class CourtCaseFile {
 	@DescriptionsList
 	@NoModify
 	@NoCreate
+	
 	private Court court;
+	@Embedded
+	
+
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@DescriptionsList
+	@NoModify
+	@NoCreate
+	private TypeOfTrial typeOfTrial;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@DescriptionsList
@@ -75,5 +88,13 @@ public class CourtCaseFile {
 		this.descriptionFile = descriptionFile;
 	}
 	
-	
+
+	public TypeOfTrial getTypeOfTrial() {
+		return typeOfTrial;
+	}
+
+	public void setTypeOfTrial(TypeOfTrial typeOfTrial) {
+		this.typeOfTrial = typeOfTrial;
+	}
+
 }
