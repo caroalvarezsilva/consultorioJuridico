@@ -1,2 +1,2 @@
-<jsp:forward page="/m/TodayAgendaRequest"/>
+<jsp:forward page="/m/TodayAgendaRequest"></jsp:forward>
 

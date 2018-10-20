@@ -43,7 +43,6 @@ public class Person {
 	private DocumentType documentType;
 	
 	@Embedded
-	@Required
 	private Address address;
 	
 	@Column(length = 30)

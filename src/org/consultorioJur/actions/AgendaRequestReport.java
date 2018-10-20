@@ -17,6 +17,7 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 	
 	
 	private AgendaRequest agendaRequest;
+	private String folderNumberFromAction;
 
 
 	@Override
@@ -38,6 +39,10 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		
 		//traigo la agenda la persona y el grupo de atencion
 		String folderNumber =getView().getValueString("folderNumber");
+		//folderNumber taken from the view when its in bar menu otherwise in the action save + print
+		if (folderNumber == null || folderNumber.isEmpty()) {
+			folderNumber = folderNumberFromAction;
+		}
 		String sql = "SELECT ar FROM AgendaRequest ar WHERE folderNumber = :folderNumber";
 		Query query = XPersistence.getManager().createQuery(sql);
 		query.setParameter("folderNumber", folderNumber);
@@ -99,7 +104,7 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 			a= a.concat(address.getDepartment().getName());
 			
 		a= a.concat(" ");
-		a= a.concat(address.getNeighborhood());
+		a= a.concat(address.getNeighborhood().getName());
 
 		String sa = address.getStreet();
 		
@@ -120,11 +125,15 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		parameters.put("email", person.getEmail());
 		parameters.put("problem", (agendaRequest.getProblem()!=null)?agendaRequest.getProblem():"");
 
-		
-		
-		//parameters.put("number",agendaRequest.getAgendaRequestId());
-
 		return parameters;
 	}
 
+	public String getFolderNumberFromAction() {
+		return folderNumberFromAction;
+	}
+
+	public void setFolderNumberFromAction(String folderNumberFromAction) {
+		this.folderNumberFromAction = folderNumberFromAction;
+	}
+	
 }
