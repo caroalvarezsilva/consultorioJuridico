@@ -254,7 +254,7 @@
 				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="190" y="354" width="110" height="18" uuid="90f23bf8-de53-4120-b09f-e548cfbdff0d"/>
+				<reportElement x="190" y="354" width="350" height="18" uuid="90f23bf8-de53-4120-b09f-e548cfbdff0d"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -268,7 +268,7 @@
 				<textFieldExpression><![CDATA[$P{document}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="190" y="384" width="110" height="18" uuid="c564bf64-872e-4ec6-a53a-a42b0b967ff0"/>
+				<reportElement x="190" y="384" width="210" height="18" uuid="c564bf64-872e-4ec6-a53a-a42b0b967ff0"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -289,7 +289,7 @@
 				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="190" y="429" width="110" height="18" uuid="dca1d570-0b34-432f-9c1b-802313faa973"/>
+				<reportElement x="190" y="429" width="210" height="18" uuid="dca1d570-0b34-432f-9c1b-802313faa973"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -310,7 +310,7 @@
 				<textFieldExpression><![CDATA[$P{addressB}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="10" y="151" width="530" height="1" uuid="0267855b-90fe-4256-adb4-53c31bf63eb9"/>
+				<reportElement x="10" y="151" width="350" height="1" uuid="0267855b-90fe-4256-adb4-53c31bf63eb9"/>
 			</line>
 			<staticText>
 				<reportElement x="30" y="138" width="290" height="18" uuid="ddd24b90-fd54-44ba-aee4-1b5b5fac4177"/>
@@ -320,7 +320,7 @@
 				<text><![CDATA[Detalle de  primera consulta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="2" width="160" height="18" uuid="c1ae6ec2-325d-48b0-a360-b61bfcca6c30"/>
+				<reportElement x="30" y="2" width="300" height="58" uuid="c1ae6ec2-325d-48b0-a360-b61bfcca6c30"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -334,14 +334,14 @@
 				<text><![CDATA[Juzgado:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="32" width="160" height="18" uuid="d0d2e71f-8558-4ab7-89a5-88b41646b7f7"/>
+				<reportElement x="30" y="32" width="360" height="18" uuid="d0d2e71f-8558-4ab7-89a5-88b41646b7f7"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[ Materia:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="47" width="160" height="18" uuid="2cc92136-8d40-49d4-9d5d-d0a2c3140081"/>
+				<reportElement x="30" y="47" width="260" height="18" uuid="2cc92136-8d40-49d4-9d5d-d0a2c3140081"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -355,7 +355,7 @@
 				<text><![CDATA[Carátula expediente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="62" width="160" height="18" uuid="cc5ed277-42c1-4b8b-98cc-d1082ab9e963"/>
+				<reportElement x="30" y="62" width="360" height="18" uuid="cc5ed277-42c1-4b8b-98cc-d1082ab9e963"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
