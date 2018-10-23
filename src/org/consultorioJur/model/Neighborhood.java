@@ -12,6 +12,7 @@ public class Neighborhood {
 	
 	@ManyToOne( fetch=FetchType.LAZY, optional=false) 
 	@NoCreate 
+	@DescriptionsList
 	Department department;
 	
 	public String getName() {
