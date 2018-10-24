@@ -133,14 +133,14 @@ public class CaseFileReport extends JasperReportBaseAction {
 		
 		Address address = person.getAddress();
 		String a = ""; 
+		Neighborhood nbh =address.getNeighborhood();
+		if (nbh != null)
+			a= a.concat(address.getNeighborhood().getName()).concat(", ");
 		Department dep = address.getDepartment();
 		if (dep != null)
 			a= a.concat(address.getDepartment().getName());
-			
-		a= a.concat(" ");
-		Neighborhood nbh =address.getNeighborhood();
-		if (nbh != null)
-			a= a.concat(address.getNeighborhood().getName());
+
+
 
 		String sa = address.getStreet();
 		

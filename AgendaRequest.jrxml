@@ -245,7 +245,7 @@
 				<text><![CDATA[Motivo visita:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="30" y="275" width="180" height="18" uuid="d49d8d0f-95a9-41c8-9746-d50491b2e97c"/>
+				<reportElement x="30" y="275" width="180" height="58" uuid="d49d8d0f-95a9-41c8-9746-d50491b2e97c"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
@@ -280,7 +280,7 @@
 				<textFieldExpression><![CDATA[$P{document}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="190" y="215" width="110" height="18" uuid="c564bf64-872e-4ec6-a53a-a42b0b967ff0"/>
+				<reportElement x="190" y="215" width="350" height="18" uuid="c564bf64-872e-4ec6-a53a-a42b0b967ff0"/>
 				<textElement>
 					<font fontName="Arial Black" size="9" isBold="false"/>
 				</textElement>
