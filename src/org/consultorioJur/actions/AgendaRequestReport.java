@@ -99,20 +99,22 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		
 		Address address = person.getAddress();
 		String a = ""; 
-		Department dep = address.getDepartment();
+		String sa = "";
 		
-		Neighborhood nbh =address.getNeighborhood();
-		if (nbh != null)
-			a= a.concat(address.getNeighborhood().getName()).concat(", ");
-		
-		if (dep != null)
-			a= a.concat(address.getDepartment().getName());
+
 		
 		
 
-
-		String sa = address.getStreet();
-		
+		if (address != null) {
+			sa = address.getStreet();
+			Department dep = address.getDepartment();
+			Neighborhood nbh =address.getNeighborhood();
+			if (nbh != null)
+				a= a.concat(address.getNeighborhood().getName()).concat(", ");
+			
+			if (dep != null)
+				a= a.concat(address.getDepartment().getName());
+		}	
 		parameters.put("address", sa);
 		parameters.put("addressB", a);
 		parameters.put("salary", person.getSalary());

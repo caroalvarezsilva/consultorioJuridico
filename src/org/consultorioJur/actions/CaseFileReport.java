@@ -133,16 +133,25 @@ public class CaseFileReport extends JasperReportBaseAction {
 		
 		Address address = person.getAddress();
 		String a = ""; 
-		Neighborhood nbh =address.getNeighborhood();
-		if (nbh != null)
-			a= a.concat(address.getNeighborhood().getName()).concat(", ");
-		Department dep = address.getDepartment();
-		if (dep != null)
-			a= a.concat(address.getDepartment().getName());
+		String sa = "";
+		
 
+		
+		
 
-
-		String sa = address.getStreet();
+		if (address != null) {
+			sa = address.getStreet();
+			Department dep = address.getDepartment();
+			Neighborhood nbh =address.getNeighborhood();
+			if (nbh != null)
+				a= a.concat(address.getNeighborhood().getName()).concat(", ");
+			
+			if (dep != null)
+				a= a.concat(address.getDepartment().getName());
+		}	
+		parameters.put("address", sa);
+		parameters.put("addressB", a);
+		parameters.put("salary", person.getSalary());
 		
 		parameters.put("address", sa);
 		parameters.put("addressB", a);
