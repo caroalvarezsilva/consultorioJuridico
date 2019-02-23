@@ -1,11 +1,13 @@
 package org.consultorioJur.model;
 
+import java.util.*;
+
 import javax.persistence.*;
 
+import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
 @Entity
-
 public class CaseFile {
 
 	@Id
@@ -22,6 +24,12 @@ public class CaseFile {
 	@ReferenceView("Simple")
 	private AgendaRequest agendaRequest;
 
+	@OneToMany(mappedBy = "caseFile")
+	@ElementCollection
+	@ListProperties("year, student.id, student.nombre")
+	private Set<CaseFileStudent> caseFileStudents = new HashSet<CaseFileStudent>();
+	
+
 	public AgendaRequest getAgendaRequest() {
 		return agendaRequest;
 	}
@@ -33,9 +41,6 @@ public class CaseFile {
 	@Embedded
 	private Archived archived;
 
-
-
-
 	public Integer getCaseFileId() {
 		return caseFileId;
 	}
@@ -43,8 +48,6 @@ public class CaseFile {
 	public void setCaseFileId(Integer caseFileId) {
 		this.caseFileId = caseFileId;
 	}
-
-
 
 	public Archived getArchived() {
 		return archived;
@@ -62,4 +65,11 @@ public class CaseFile {
 		this.courtCaseFile = courtCaseFile;
 	}
 
+	public Set<CaseFileStudent> getCaseFileStudents() {
+		return caseFileStudents;
+	}
+
+	public void setCaseFileStudents(Set<CaseFileStudent> caseFileStudents) {
+		this.caseFileStudents = caseFileStudents;
+	}
 }

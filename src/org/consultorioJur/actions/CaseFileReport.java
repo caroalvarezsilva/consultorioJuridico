@@ -1,6 +1,7 @@
 package org.consultorioJur.actions;
 
 import org.consultorioJur.model.*;
+import org.consultorioJur.model.ConsultantPerson.*;
 import org.openxava.actions.*;
 
 import net.sf.jasperreports.engine.*;
@@ -85,7 +86,7 @@ public class CaseFileReport extends JasperReportBaseAction {
 		//AgendaRequest agendaRequest = XPersistence.getManager().findByFolderName(AgendaRequest.class, id); 
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();
 
-		Person person = agendaRequest.getPerson();
+		ConsultantPerson person = agendaRequest.getPerson();
 		String personName = "";
 		personName = personName.concat(person.getName());
 		personName = personName.concat(" ");

@@ -17,7 +17,7 @@
 			disponible-en-nuevo="false" clase="org.consultorioJur.actions.AgendaRequestReport" />
 
 		<accion nombre="savePrint" modo="detail" disponible-en-nuevo="true"
-			clase="org.consultorioJur.actions.SaveAgendaRequest" />
+			clase="org.consultorioJur.actions.SaveAgendaRequest"/>
 	</controlador>
 
 	<controlador nombre="TodayAgendaRequest">
@@ -34,9 +34,13 @@
 		<accion nombre="add"
 			clase="org.consultorioJur.actions.AgendaRequestAddPerson" />
 		<accion nombre="cancel"
-			clase="org.consultorioJur.actions.AgendaRequestCancelAddPerson" />
+			clase="org.consultorioJur.actions.AgendaRequestCancelAddPerson" />	
 	</controlador>
-
+	
+	<controlador nombre="OnChangePerson">
+		<accion nombre="OnChangeSearchPersonAction"
+			clase="org.consultorioJur.actions.OnChangeSearchPersonAction" />
+	</controlador>
 	<controlador nombre="CaseFileEdition"> 
 		<accion nombre="save" clase="org.consultorioJur.actions.CaseFileEdition" />
 		<accion nombre="cancel" clase="org.consultorioJur.actions.CaseFileCancel" />
@@ -46,11 +50,22 @@
 			clase="org.consultorioJur.actions.CaseFileReport" imagen="pdf.gif">
 		</accion>
 	</controlador>
-	<controlador nombre="CaseFile">
-		<accion nombre="printCaseFile" modo="detail" disponible-en-nuevo="false"
-			clase="org.consultorioJur.actions.CaseFileReport" imagen="pdf.gif">
-		</accion>
+	<controlador nombre="DefaultListActionsForCollections">
+    		<hereda-de controlador="Print" acciones-excluidas="cut"/>
 	</controlador>
+	
+	<controlador nombre="ListActionsForCollectionsExcluded">
+		<hereda-de controlador="DefaultListActionsForCollections" acciones-excluidas="cut" />
+	</controlador>
+	
+	<controlador nombre="Student">
+        <hereda-de controlador="PersistenceUnit"/>         
+        <accion nombre="cambiarFder" al-iniciar="true" 
+            clase="org.openxava.actions.SetPersistenceUnitAction">
+            <poner propiedad="newPersistenceUnit" valor="fder"/>
+        </accion>
+	</controlador>
+	
 	<objeto nombre="caseFileKey" clase="java.util.Map" ambito="global" />
 
 </controladores>

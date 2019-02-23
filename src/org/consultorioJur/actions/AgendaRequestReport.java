@@ -6,6 +6,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.consultorioJur.model.*;
+import org.consultorioJur.model.ConsultantPerson.*;
 import org.consultorioJur.model.Person.*;
 import org.openxava.actions.*;
 import org.openxava.jpa.*;
@@ -51,7 +52,7 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		//AgendaRequest agendaRequest = XPersistence.getManager().findByFolderName(AgendaRequest.class, id); 
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();
 
-		Person person = agendaRequest.getPerson();
+		ConsultantPerson person = agendaRequest.getPerson();
 		String personName = "";
 		personName = personName.concat(person.getName());
 		personName = personName.concat(" ");
