@@ -9,7 +9,7 @@ public class OnChangeSearchPersonAction extends OnChangeSearchAction {
 		if (!getErrors().isEmpty()) {
 			getErrors().removeAll();
 			showDialog();
-			getView().setModelName("Person");
+			getView().setModelName("ConsultantPerson");
 			addActions("AgendaRequestModalPerson.cancel", "AgendaRequestModalPerson.add");
 
 		}

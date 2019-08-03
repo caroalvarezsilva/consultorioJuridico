@@ -7,7 +7,6 @@ import javax.persistence.*;
 import org.consultorioJur.actions.*;
 import org.consultorioJur.calculators.*;
 import org.openxava.annotations.*;
-import org.openxava.calculators.*;
 /**
  * @author caralvarez
  *
@@ -17,9 +16,7 @@ import org.openxava.calculators.*;
 		+ "problem;"),
 		@View(name = "Simple", members = "Codigo Expediente [folderNumber ];" + "person;" + "visitReason;"
 				+ "problem;") })
-@Tab()
 public class AgendaRequest {
-
 
 	@Id
 	@Hidden
@@ -33,7 +30,7 @@ public class AgendaRequest {
 	private String visitDate;
 
 
-	@Column(unique = true, length = 15)
+	@Column(	length = 30)
 	@Required
 	private String folderNumber;
 
@@ -48,9 +45,9 @@ public class AgendaRequest {
 	private GroupLawCenter groupLawCenter;
 
 	
-	@ManyToOne
+	@ManyToOne(targetEntity=ConsultantPerson.class)
 	@OnChangeSearch(OnChangeSearchPersonAction.class)
-	private Person person;
+	private ConsultantPerson person;
 
 	@NoModify
 	@NoCreate
@@ -82,11 +79,12 @@ public class AgendaRequest {
 		this.groupLawCenter = groupLawCenter;
 	}
 
-	public Person getPerson() {
+
+	public ConsultantPerson getPerson() {
 		return person;
 	}
 
-	public void setPerson(Person person) {
+	public void setPerson(ConsultantPerson person) {
 		this.person = person;
 	}
 

@@ -4,14 +4,13 @@ import java.util.*;
 import org.openxava.actions.*;
 
 
-public class AgendaRequestCancelAddPerson extends CancelDialogAction {
+public class CaseFileAddStudent extends SaveAction {
 
 	@Override
 	public void execute() throws Exception {
-		
+		Map values = getView().getValues();
 		super.execute();
-		setView(getView().getParent());
-		getView().setModelName("AgendaRequest");
-		
+		addActions("Collections.SaveElementInCollectionAction");
+	
 	}
 }

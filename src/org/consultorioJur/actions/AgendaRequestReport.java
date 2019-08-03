@@ -6,6 +6,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.consultorioJur.model.*;
+import org.consultorioJur.model.ConsultantPerson.*;
 import org.consultorioJur.model.Person.*;
 import org.openxava.actions.*;
 import org.openxava.jpa.*;
@@ -14,8 +15,6 @@ import net.sf.jasperreports.engine.*;
 
 public class AgendaRequestReport extends JasperReportBaseAction {
 
-	
-	
 	private AgendaRequest agendaRequest;
 	private String folderNumberFromAction;
 
@@ -33,10 +32,7 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 	}
 
 	@Override
-	protected Map getParameters() throws Exception {
-	//	AgendaRequest agendaRequest  = XPersistence.getManager().find(AgendaRequest.class,	 getView().getValues()); // TODO Auto-generated method stub
-
-		
+	protected Map getParameters() throws Exception {		
 		//traigo la agenda la persona y el grupo de atencion
 		String folderNumber =getView().getValueString("folderNumber");
 		//folderNumber taken from the view when its in bar menu otherwise in the action save + print
@@ -47,11 +43,10 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		Query query = XPersistence.getManager().createQuery(sql);
 		query.setParameter("folderNumber", folderNumber);
 		AgendaRequest agendaRequest = (AgendaRequest) query.getSingleResult();
-	    
-		//AgendaRequest agendaRequest = XPersistence.getManager().findByFolderName(AgendaRequest.class, id); 
+	     
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();
 
-		Person person = agendaRequest.getPerson();
+		ConsultantPerson person = agendaRequest.getPerson();
 		String personName = "";
 		personName = personName.concat(person.getName());
 		personName = personName.concat(" ");
@@ -100,11 +95,7 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 		Address address = person.getAddress();
 		String a = ""; 
 		String sa = "";
-		
-
-		
-		
-
+	
 		if (address != null) {
 			sa = address.getStreet();
 			Department dep = address.getDepartment();

@@ -28,4 +28,3 @@ MetaApplication metaApplication = MetaApplications.getMetaApplication(applicatio
 <!-- </tr> -->
 <!-- </table> -->
 
-<p><xava:message key="signin_tip" param="<%=metaApplication.getLabel()%>"/></p>

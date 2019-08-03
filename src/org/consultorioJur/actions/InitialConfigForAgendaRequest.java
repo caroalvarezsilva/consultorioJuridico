@@ -1,7 +1,5 @@
 package org.consultorioJur.actions;
 
-import java.util.*;
-
 import org.openxava.actions.*;
 import org.openxava.tab.*;
 

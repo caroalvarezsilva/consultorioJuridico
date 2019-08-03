@@ -18,21 +18,6 @@ public class Teacher {
 	@Required
 	private String name;
 	
-//	@ManyToMany
-//	  @JoinTable(
-//	      name="TeacherGroupLawCenter",
-//	      joinColumns=@JoinColumn(name="teacherId", referencedColumnName="teacherId"),
-//	      inverseJoinColumns=@JoinColumn(name="groupId", referencedColumnName="groupId"))
-//	private List<GroupLawCenter> groupLawCenters;
-//
-//	public List<GroupLawCenter> getGroupLawCenters() {
-//		return groupLawCenters;
-//	}
-//
-//	public void setGroupLawCenters(List<GroupLawCenter> groupLawCenters) {
-//		this.groupLawCenters = groupLawCenters;
-//	}
-
 	public int getTeacherId() {
 		return teacherId;
 	}
@@ -48,6 +33,5 @@ public class Teacher {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	
 }
