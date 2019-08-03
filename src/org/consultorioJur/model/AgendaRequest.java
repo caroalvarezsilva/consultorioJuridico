@@ -30,7 +30,7 @@ public class AgendaRequest {
 	private String visitDate;
 
 
-	@Column(	length = 15)
+	@Column(	length = 30)
 	@Required
 	private String folderNumber;
 

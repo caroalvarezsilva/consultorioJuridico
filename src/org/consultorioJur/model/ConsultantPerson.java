@@ -72,6 +72,4 @@ public class ConsultantPerson extends Person {
 		this.salary = salary;
 	}
 	
-	
-	
 }

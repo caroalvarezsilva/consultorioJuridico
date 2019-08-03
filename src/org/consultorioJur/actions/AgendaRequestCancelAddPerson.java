@@ -13,6 +13,5 @@ public class AgendaRequestCancelAddPerson extends CancelDialogAction {
 		setView(getView().getParent());
 		getView().setModelName("AgendaRequest");
 		
-	
 	}
 }

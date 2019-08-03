@@ -5,8 +5,7 @@ import javax.persistence.*;
 import org.consultorioJur.actions.*;
 import org.openxava.annotations.*;
 
-@Entity
-//@View (members="year, student.id, student.nombre") 
+@Entity 
 public class CaseFileStudent {
 	
 	@Id
@@ -15,11 +14,6 @@ public class CaseFileStudent {
 	private long caseFileStudentId;
 	
 	@Embedded
-	//@ManyToOne(targetEntity=Student.class)
-    //@JoinColumn(name = "id")
-	//@OnChangeSearch(OnChangeLookInFderDB.class)
-	//@SearchAction("Student.search")
-	//@OnChange(OnChangeLookInFderDB.class)
 	private StudentCJ student;
 	
 
@@ -29,11 +23,6 @@ public class CaseFileStudent {
 
     private String year;
     
-	
-
-	
-	
-	
 	public long getCaseFileStudentId() {
 		return caseFileStudentId;
 	}

@@ -15,10 +15,7 @@ import org.openxava.jpa.*;
 
 public class CaseFileReport extends JasperReportBaseAction {
 
-	
-	
 	private CaseFile caseFile;
-
 
 	@Override
 	protected JRDataSource getDataSource() throws Exception {
@@ -34,9 +31,6 @@ public class CaseFileReport extends JasperReportBaseAction {
 
 	@Override
 	protected Map getParameters() throws Exception {
-	//	AgendaRequest agendaRequest  = XPersistence.getManager().find(AgendaRequest.class,	 getView().getValues()); // TODO Auto-generated method stub
-
-		
 		//traigo la agenda la persona y el grupo de atencion
 		Integer caseFileId =(Integer) getView().getValue("caseFileId");
 		String sql = "SELECT cf FROM CaseFile cf WHERE caseFileId = :caseFileId";
@@ -137,9 +131,6 @@ public class CaseFileReport extends JasperReportBaseAction {
 		String sa = "";
 		
 
-		
-		
-
 		if (address != null) {
 			sa = address.getStreet();
 			Department dep = address.getDepartment();
@@ -170,10 +161,6 @@ public class CaseFileReport extends JasperReportBaseAction {
 		parameters.put("motive", agendaRequest.getVisitReason().getReason());
 		parameters.put("email", person.getEmail());
 		parameters.put("problem", (agendaRequest.getProblem()!=null)?agendaRequest.getProblem():"");
-
-		
-		
-		//parameters.put("number",agendaRequest.getAgendaRequestId());
 
 		return parameters;
 	}

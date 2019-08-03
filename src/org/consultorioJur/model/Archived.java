@@ -33,7 +33,5 @@ public class Archived {
 	public void setCauseToFile(CauseToFile causeToFile) {
 		this.causeToFile = causeToFile;
 	}
-	
-	
 
 }

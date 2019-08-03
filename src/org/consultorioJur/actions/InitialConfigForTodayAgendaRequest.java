@@ -12,12 +12,8 @@ public class InitialConfigForTodayAgendaRequest extends BaseAction {
 	public void execute() throws Exception {
 	
 		Tab tab = (Tab) getContext().get("ConsultorioJuridico", "TodayAgendaRequest", "xava_tab");
-
 		tab.setConditionValue("date", new Date());
-		tab.setFilterVisible(false);
-		
-	
+		tab.setFilterVisible(false);	
+
 	}
-
-
 }
