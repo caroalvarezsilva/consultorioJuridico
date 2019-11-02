@@ -41,6 +41,7 @@
 		<accion nombre="OnChangeSearchPersonAction"
 			clase="org.consultorioJur.actions.OnChangeSearchPersonAction" />
 	</controlador>
+	
 	<controlador nombre="CaseFileEdition"> 
 		<accion nombre="save" clase="org.consultorioJur.actions.CaseFileEdition" />
 		<accion nombre="cancel" clase="org.consultorioJur.actions.CaseFileCancel" />
@@ -65,6 +66,13 @@
             <poner propiedad="newPersistenceUnit" valor="fder"/>
         </accion>
 	</controlador>
+	
+	<controlador nombre="Notes"> 
+		<hereda-de controlador="Typical"/>
+		<accion nombre="new" al-iniciar="true" clase="org.consultorioJur.actions.NewNotes" />
+	</controlador>
+	
+	
 	
 	<objeto nombre="caseFileKey" clase="java.util.Map" ambito="global" />
 

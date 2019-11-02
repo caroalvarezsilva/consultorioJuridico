@@ -16,7 +16,6 @@ import org.openxava.annotations.*;
 @Embeddable
 public class CourtCaseFile {
 	
-
 	@Column(length = 50)
 	private String courtFile;
 	
@@ -24,12 +23,9 @@ public class CourtCaseFile {
 	@DescriptionsList
 	@NoModify
 	@NoCreate
-	
 	private Court court;
+	
 	@Embedded
-	
-
-	
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@DescriptionsList
 	@NoModify
@@ -43,7 +39,7 @@ public class CourtCaseFile {
 	private Subject subject;
 	
 	@Column(length = 30)
-	private Date courtdate;
+	private String courtdate;
 	
 	@Column(length = 150)
 	private String descriptionFile;
@@ -72,11 +68,11 @@ public class CourtCaseFile {
 		this.subject = subject;
 	}
 
-	public Date getCourtdate() {
+	public String getCourtdate() {
 		return courtdate;
 	}
 
-	public void setCourtdate(Date courtdate) {
+	public void setCourtdate(String courtdate) {
 		this.courtdate = courtdate;
 	}
 

@@ -35,13 +35,14 @@ public class AgendaRequestReport extends JasperReportBaseAction {
 	protected Map getParameters() throws Exception {		
 		//traigo la agenda la persona y el grupo de atencion
 		String folderNumber =getView().getValueString("folderNumber");
+		Integer agendaRequestId =getView().getValueInt("agendaRequestId");
 		//folderNumber taken from the view when its in bar menu otherwise in the action save + print
 		if (folderNumber == null || folderNumber.isEmpty()) {
 			folderNumber = folderNumberFromAction;
 		}
-		String sql = "SELECT ar FROM AgendaRequest ar WHERE folderNumber = :folderNumber";
+		String sql = "SELECT ar FROM AgendaRequest ar WHERE agendaRequestId = :agendaRequestId";
 		Query query = XPersistence.getManager().createQuery(sql);
-		query.setParameter("folderNumber", folderNumber);
+		query.setParameter("agendaRequestId", agendaRequestId);
 		AgendaRequest agendaRequest = (AgendaRequest) query.getSingleResult();
 	     
 		GroupLawCenter glc = agendaRequest.getGroupLawCenter();

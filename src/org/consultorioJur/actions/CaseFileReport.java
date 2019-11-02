@@ -53,10 +53,9 @@ public class CaseFileReport extends JasperReportBaseAction {
 			Court court = cCF.getCourt();
 			if (court!=null)
 				cName = court.getName(); 
-			Date courtDate = cCF.getCourtdate();
+			String courtDate = cCF.getCourtdate();
 			if (courtDate!=null) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-				cdate  = dateFormat.format(courtDate);
+				cdate  = courtDate;
 			}
 
 			cfile = cCF.getCourtFile();

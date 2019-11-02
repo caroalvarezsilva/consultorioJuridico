@@ -29,6 +29,12 @@ public class CaseFile {
 	@ListProperties("year, student.id, student.nombre")
 	private Set<CaseFileStudent> caseFileStudents = new HashSet<CaseFileStudent>();
 	
+	@OneToMany(mappedBy = "caseFile")
+	@ElementCollection
+	@ListProperties("note.date, note.user")
+	@NewAction("Notes.new")
+	private List<CaseFileNotes> notes = new ArrayList<CaseFileNotes>();
+	
 
 	public AgendaRequest getAgendaRequest() {
 		return agendaRequest;
@@ -72,4 +78,15 @@ public class CaseFile {
 	public void setCaseFileStudents(Set<CaseFileStudent> caseFileStudents) {
 		this.caseFileStudents = caseFileStudents;
 	}
+
+	public List<CaseFileNotes> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<CaseFileNotes> notes) {
+		this.notes = notes;
+	}
+
+	
+	
 }

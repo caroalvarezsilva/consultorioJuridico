@@ -58,7 +58,6 @@ public class AgendaRequest {
 	@NoModify
 	@NoCreate
 	@OneToOne
-
 	private CaseFile caseFile;
 
 	public CaseFile getCaseFile() {
