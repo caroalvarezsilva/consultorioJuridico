@@ -166,5 +166,7 @@ public class AgendaRequest {
 	public void setVisitDate(String visitDate) {
 		this.visitDate = visitDate;
 	}
+	
+	
 
 }
